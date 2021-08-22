@@ -485,13 +485,22 @@
       </table>
       <script>
         
-        const celulas = document.querySelectorAll('td');
+        const celulas = document.querySelectorAll( 'td' );
 
         for( let i = 0; i < celulas.length-1; i++ ) {
  
+          celulas[i].addEventListener( 'click', printClass, false );
+
           if ( ! celulas[i].className ) {
-            celulas[i].classList.add('parede');
+            celulas[i].classList.add( 'parede' );
           }
+        }
+
+        function printClass ( event ) {
+
+          let target = event.target;
+
+          console.log( target.className );
         }
 
       </script>
