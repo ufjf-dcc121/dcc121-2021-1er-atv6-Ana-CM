@@ -489,18 +489,39 @@
 
         for( let i = 0; i < celulas.length-1; i++ ) {
  
-          celulas[i].addEventListener( 'click', printClass, false );
+          celulas[i].addEventListener( 'click', changeClass, false );
 
           if ( ! celulas[i].className ) {
             celulas[i].classList.add( 'parede' );
           }
         }
 
-        function printClass ( event ) {
+        function changeClass( event ) {
 
           let target = event.target;
 
-          console.log( target.className );
+          switch ( target.className ) {
+
+            case 'parede':
+              target.classList.remove( 'parede' );
+              break;
+
+            case 'orc':
+              target.classList.remove( 'orc' );
+              target.classList.add( 'tesouro' );
+              target.innerHTML = "D";
+              break;
+
+            case 'tesouro':
+              target.classList.remove( 'tesouro' );
+              target.classList.add( 'parede' );
+              target.innerHTML = " ";
+              break;
+
+            default:
+              target.classList.add( 'orc' );
+              target.innerHTML = "O";
+          }
         }
 
       </script>
